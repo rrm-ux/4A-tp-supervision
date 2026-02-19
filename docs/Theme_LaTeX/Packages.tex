@@ -1,0 +1,684 @@
+%______________________________________IMPORTATION DES PACKAGES_________________________________________
+
+
+
+
+%mise en page
+\usepackage{layout}     
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{lscape}
+\usepackage{fancyhdr}
+\renewcommand{\baselinestretch}{1.2}
+%\usepackage{ulem}
+\usepackage{enumitem}
+\usepackage{lipsum}
+\usepackage{datetime}				
+% custom date
+\newdateformat{mydate}{\monthname[\THEMONTH] \THEYEAR}	
+
+%Gloossaire
+%\usepackage[automake]{glossaries}
+%\makeglossaries
+%\setglossarystyle{listgroup}
+
+%Couleurs
+\usepackage{color}
+\definecolor{BleuFonce}{RGB}{0,74,117}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{colortbl}
+
+%______________________________________POLICES ET ACCENTS_________________________________________
+\usepackage{ifxetex}
+\ifxetex
+    \usepackage{fontspec}
+    \setmainfont{Latin Modern Roman}
+    \setsansfont{Latin Modern Sans}
+    \setmonofont{Latin Modern Mono}
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+\usepackage[french]{babel}
+\usepackage{amsfonts}
+
+% Force proper font encoding for PDF - CRUCIAL for correct accent rendering
+% \input{glyphtounicode}
+% \pdfgentounicode=1
+
+
+%maths et symboles
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{dsfont}
+\usepackage{chemarr}
+
+%insertion images et graphiques
+\usepackage{graphicx,subfigure}
+%\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{chemfig}
+ \usepackage{tikz,pgfplots}
+\usepackage[framemethod=tikz]{mdframed}
+\usetikzlibrary{shadows,shadings}
+
+%tableaux
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{makecell}
+\setcellgapes{6pt}
+
+%Liens et PDF
+% \usepackage{minitoc}
+\usepackage[bookmarks=true,bookmarksnumbered=true]{hyperref}
+\usepackage{url}
+
+
+%Informatique et code source
+\usepackage{listings}
+
+%%configuration de listings
+\lstset{
+language=python,
+basicstyle=\ttfamily\small, %
+identifierstyle=\color{red}, %
+keywordstyle=\color{blue}, %
+stringstyle=\color{black!60}, %
+commentstyle=\it\color{green!95!yellow!1}, %
+columns=flexible, %
+tabsize=2, %
+extendedchars=true, %
+showspaces=false, %
+showstringspaces=false, %
+numbers=left, %
+numberstyle=\tiny, %
+breaklines=true, %
+breakautoindent=true, %
+captionpos=b
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tahiry   %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[most]{tcolorbox} % For problem answer sections
+%\graphicspath{ {./Theme_LaTeX/Icones/} }
+\graphicspath{ {./Icones/} }
+% \usepackage{pythonhighlight}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fond de page %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eso-pic,graphicx}
+\usepackage{xcolor}
+\newcommand{\bgimg}[1]{
+\AddToShipoutPicture
+	{
+		\put(\LenToUnit{0 cm},\LenToUnit{0.0\paperheight})
+		{
+				\includegraphics[width=\paperwidth,height=\paperheight]{#1} 
+		}
+	}
+}
+
+
+%______________________
+
+%_______________________________________________________________________________
+%_______________________________________________________________________________
+
+
+
+
+
+%_____________________________________PAGE DE GARDE : COURS(Book)_____________
+\newcommand\PageDeGardeCours[3]{
+\addto\captionsfrench{\renewcommand{\chaptername}{Chapitre n°  \hspace{0.1cm}\Large{n°} }}
+
+	\makeatletter
+	\begin{titlepage}
+		
+		\begin{flushright}
+			\today
+		\end{flushright}
+		\vspace{3cm}
+		\begin{center}
+			\Huge{#1}
+			
+			\vspace{2cm}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=10cm]{image_Cours}
+			\end{figure}
+			\vspace{1cm}
+			\normalsize{\itshape Support de cours : #3}
+			
+			
+			\vspace{\fill}\itshape
+			\textcolor{Gray}{ #2}
+			\vspace{\fill}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	
+%--TABLES DES MATERES & Co. 
+\makeatother
+\setcounter{tocdepth}{0}
+\dominitoc%
+\tableofcontents
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+}
+
+%_____________________________________PAGE DE GARDE : TP (Book)_____________
+\newcommand\PageDeGardeTP [3]{
+\addto\captionsfrench{\renewcommand{\chaptername}{T.P  \hspace{0.1cm}\Large{n°} }}
+
+	\makeatletter
+	\begin{titlepage}
+		
+		\begin{flushright}
+			\today
+		\end{flushright}
+		\vspace{3cm}
+		\begin{center}
+			\Huge{#1}
+			
+			\vspace{2cm}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=10cm]{image_TP}
+			\end{figure}
+			\vspace{1cm}
+			\normalsize{\itshape Support de Travaux Pratiques : #3}
+			
+			
+			\vspace{\fill}\itshape
+			\textcolor{Gray}{ #2}
+			\vspace{\fill}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	
+%--TABLES DES MATERES & Co. 
+\makeatother
+\setcounter{tocdepth}{0}
+\dominitoc
+\tableofcontents
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+}
+%_____________________________________PAGE DE GARDE : TD (Book)_____________
+\newcommand\PageDeGardeTD [3]{
+\addto\captionsfrench{\renewcommand{\chaptername}{T.D  \hspace{0.1cm}\Large{n°} }}
+
+	\makeatletter
+	\begin{titlepage}
+		
+		\begin{flushright}
+			\today
+		\end{flushright}
+		\vspace{3cm}
+		\begin{center}
+			\Huge{#1}
+			
+			\vspace{2cm}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=10cm]{image_TD}
+			\end{figure}
+			\vspace{1cm}
+			\normalsize{\itshape Recueil d'exercices : #3}
+			
+			
+			\vspace{\fill}\itshape
+			\textcolor{Gray}{ #2}
+			\vspace{\fill}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	
+%--TABLES DES MATERES & Co. 
+\makeatother
+\setcounter{tocdepth}{0}
+\dominitoc
+\tableofcontents
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+}
+%_____________________________________PAGE DE GARDE : Annales (Book)_____________
+\newcommand\PageDeGardeAnnales [3]{
+\addto\captionsfrench{\renewcommand{\chaptername}{T.D  \hspace{0.1cm}\Large{n°} }}
+
+	\makeatletter
+	\begin{titlepage}
+		
+		\begin{flushright}
+			\today
+		\end{flushright}
+		\vspace{3cm}
+		\begin{center}
+			\Huge{#1}
+			
+			\vspace{2cm}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=10cm]{image_Exam}
+			\end{figure}
+			\vspace{1cm}
+			\normalsize{\itshape Recueil d'examens : #3}
+			
+			
+			\vspace{\fill}\itshape
+			\textcolor{Gray}{ #2}
+			\vspace{\fill}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	
+%--TABLES DES MATERES & Co. 
+\makeatother
+\setcounter{tocdepth}{0}
+\dominitoc
+\tableofcontents
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+}
+
+%_____________________________________PAGE DE GARDE : Partiel (Article)_____________
+\newcommand\PageDeGardePartiel [3]{
+\makeatletter 
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@} 
+\renewcommand{\maketitle}{\begin{titlepage}% 
+		\let\footnotesize\small 
+		\let\footnoterule\relax 
+		\parindent \z@ 
+		\reset@font 
+		\null 
+		\vskip 0\p@ 
+		\hbox{\mbox{\hspace{3em}}% 
+			\vrule depth 0.6\textheight% 
+			\mbox{\hspace{2em}} 
+			\vbox{ 
+				\vskip 30\p@ 
+				\begin{flushleft} 
+					\Large \@author \par 
+				\end{flushleft} 
+				\vskip 40\p@ 
+				\begin{flushleft} 
+					\huge \bfseries \@title \par 
+				\end{flushleft} 
+				\vskip 5\p@ 
+				\begin{flushleft} 
+					\@date 
+				\end{flushleft} 
+				\vfil 
+		}} 
+		\null 
+	\end{titlepage}% 
+	\setcounter{footnote}{0}% 
+} 
+\makeatother 
+\author{Devoir   \newline Durée : #2 \newline \textbf{Calculatrice programmable autorisée}} 
+\title{#1} 
+\date{ #3} 
+	
+%--TABLES DES MATERES & Co. 
+\makeatother
+\setcounter{tocdepth}{0}
+\dominitoc
+\tableofcontents
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+}
+
+
+%_____________________________PAGE DE GARDE : Rapport (Template Polytech )_____________
+\newcommand\PageDeGardeRapport[5]{
+\begin{titlepage}
+
+
+%\thispagestyle{empty}
+
+\newgeometry{left=6cm,bottom=2cm, top=1cm, right=1cm}
+
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (2.2mm,-165mm){\includegraphics{fond1.png}}; % fond changeable 
+
+% fonte sans empattement pour la page de titre
+
+\color{white}
+
+%%Texte vertical à gauche
+\begin{picture}(0,0)
+%\put(-110,-743){\rotatebox{90}{\Huge{#1}}}
+\end{picture}
+ 
+%**************************************************************
+%********************  LOGO  DE  POLYTECH  ********************
+%****** CHANGER L'IMAGE POUR UN AUTRE POLYTECH QUE SACLAY *****
+%* VOIR LES LOGOS DISPONIBLES, ET REMPLACER LE NOM CI-DESSOUS *
+%**************************************************************
+
+\vspace{-10mm} % à ajuster en fonction de la hauteur du logo
+               % décalera le texte en dessous
+\flushright \includegraphics[width=50mm]{LOGO.png} % nom du logo du polytech
+
+
+
+
+%*****************************************************
+%******************** TITRE **************************
+%*****************************************************
+\flushright
+\vspace{10mm} % à régler éventuellement
+\color{BleuFonce}
+\fontfamily{lmss}\fontseries{m}\fontsize{22}{26}\selectfont
+ #1
+
+\normalsize
+\color{black}
+%*****************************************************
+
+%\fontfamily{fvs}\fontseries{m}\fontsize{8}{12}\selectfont
+
+\vspace{1.5cm}
+\normalsize
+
+\textbf{Professeur référent : #2}
+
+\vspace{15mm}
+
+ECOLE : ESIROI \\  %% nom école
+\small Spécialité : #3 \\  %% nom spécialité / enseignement
+
+\vspace{15mm}
+
+\textbf{#4}\\
+\bigskip
+\Large {\color{BleuFonce} \textbf{#5}}
+\vspace{90mm}
+\flushright \includegraphics[width=40mm]{LOGO_UR.png} % nom du logo UR
+\end{titlepage}
+
+\newpage
+\newgeometry{left=2cm,bottom=2cm, top=2cm, right=2cm}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%________________________________Page de cloture ___________________-
+\newcommand\ClotureRapport [0]{
+\newpage
+\thispagestyle{empty}
+.
+
+\fontfamily{lmss}\fontseries{m}\selectfont
+
+\small
+
+
+
+
+%************************************
+\vspace{\fill} % ALIGNER EN BAS DE PAGE
+%************************************
+
+% Modifier en fonction de l'école
+\noindent
+\color{BleuFonce} \footnotesize 
+ESIROI \\
+40 Avenue de Soweto\\
+97410 Saint-Pierre, La Réunion
+}
+
+%------------------------------------EN TETE et bas de pages commun-----------
+\pagestyle{fancy}
+\lfoot{\textcolor{Gray}{\textit{\auteur}}}
+\lhead{\includegraphics[width=2cm]{LOGO_UR.png}}
+\rhead{\includegraphics[width=2cm]{LOGO.png}}
+\rfoot{\thepage}
+
+
+
+%___________________________________BAS DE PAGE PROPRE AU DOC____________
+\chead{\textcolor{Gray}{\titre}}
+% \cfoot{\textcolor{Gray}{\niveau}}
+\cfoot{}
+%---------------------------------------------------------------
+
+%Encadré A retenir
+\newcounter{theorem}%A modifier un jour où j'aurais du temps...
+
+\renewcommand\thetheorem{}
+\makeatletter
+\mdf@dolist{\mdf@do@stringoption}{%
+    {theoremtitle=={}}%
+}
+\renewrobustcmd\mdfcreateextratikz{%
+      \node[anchor=west,rounded corners,draw,thick,shading=axis,left color=red!20,xshift=1cm,minimum height=.7cm,minimum width=2cm] at (P-|O) 
+              {~\mdf@frametitlefont{\thetheorem}%
+                  \ifdefempty{\mdf@theoremtitle}%
+                  {~}%
+                  {~\mdf@theoremtitle~}%
+              };
+}
+\makeatother
+\mdfdefinestyle{theoremstyle}{
+outerlinewidth=1pt,
+innerlinewidth=0pt,
+roundcorner=2pt,
+linecolor=black,
+shadow=true,
+tikzsetting={shading=axis,top color=orange!20},
+innertopmargin=1.2\baselineskip,
+skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
+needspace=3\baselineskip,
+frametitlefont=\sffamily\bfseries,
+settings={\global\stepcounter{theorem}},
+}
+\newenvironment{retenir}[1][]
+{\begin{mdframed}[style=theoremstyle,theoremtitle={#1}]\relax}{\end{mdframed}}
+
+
+
+
+%______________________________FORMATAGE DES TITRES_____________________
+\newcommand\Chapitre [1]{\textcolor{Mahogany} {\chapter{\bfseries #1}}}
+\newcommand\TitreA [1]{\textcolor{Mahogany} {\section{\bfseries #1}}}
+\newcommand\TitreB [1]{{\addtolength{\leftskip}{1cm}\textcolor{MidnightBlue} {\subsection{\itshape #1}}}}
+\newcommand\TitreC [1]{{\addtolength{\leftskip}{1,5cm}\textcolor{Sepia} {\subsubsection{ \RIGHTarrow    #1}}}}
+\newcommand\TitreAb [1]{\textcolor{Mahogany} {\section*{\bfseries #1}}}
+\newcommand\TitreBb [1]{{\addtolength{\leftskip}{1cm}\textcolor{MidnightBlue} {\subsection*{\itshape #1}}}}
+\newcommand\TitreCb [1]{{\addtolength{\leftskip}{1,5cm}\textcolor{SeaGreen} {\subsubsection*{\itshape #1}}}}
+\newcommand{\Exo}[1]
+{{\textcolor{Sepia}{\large \textbf{\stepcounter{cexercice} Exercice n°\arabic{cexercice} : #1}\\}}}
+\newcommand\Retenir[1]{ \vspace{1cm}\textcolor{RedOrange} {{ \fontfamily{augie}\selectfont #1\vspace{1cm} }}}
+%---------------------------------------------------------------
+
+
+
+%____________________________FORMAT Encadrés et surlignés___________________________
+
+ \definecolor{light-gray}{gray}{0.95}
+
+\newcommand{\Encadre}[1]
+{
+\fcolorbox{gray}{light-gray}{
+\begin{minipage}{0.9\textwidth}
+#1
+\end{minipage}
+}
+}
+
+\definecolor{light-gray}{rgb}{0.98,0.98,0.98}
+\newcommand{\CadreG}[1]{
+\fcolorbox{black}{light-gray}{\begin{minipage}[c]{0.95\linewidth}
+\vspace{0.2cm}
+#1
+
+\end{minipage}}
+\vspace{0.2cm}
+}
+
+\definecolor{powderblue}{rgb}{0.69, 0.88, 0.9}
+\newcommand{\CadreB}[1]{
+\fcolorbox{black}{powderblue}{\begin{minipage}[c]{0.95\linewidth}
+\vspace{0.2cm}
+#1
+
+\end{minipage}}
+\vspace{0.2cm}
+}
+  
+\newcommand{\EtiquetteR}[1]
+   {\vspace{0.5cm}\colorbox{GreenYellow}{\textcolor{RedOrange}{\textbf{#1}}}\vspace{0.5cm}}
+
+\newcommand{\BoiteColor}[3]
+   {\colorbox{#1}{\textcolor{#2}{\large{\textbf{#3}}}}}
+   
+% \newcommand\Smile[0]{\begin{center} \blacksmiley\end{center}}
+%_______________________________________________________________________________
+
+%_________________________________________Formattage article court_____________________
+% Define separators
+\newcommand{\HorRule}[1]{\noindent\rule{\linewidth}{#1}} % Creating a horizontal rule
+\newcommand{\SepRule}{\noindent							 % Creating a separator
+						\begin{center}
+							\rule{250pt}{1pt}
+						\end{center}
+						}						
+
+% Define Title en News input
+\newcommand{\JournalName}[1]{%
+		\begin{center}	
+			\Huge \usefont{T1}{augie}{m}{n}
+			#1%
+		\end{center}	
+		\par \normalsize \normalfont}
+		
+\newcommand{\JournalIssue}[1]{%
+		\hfill \textsc{\mydate \today}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewsItem}[1]{%
+		\usefont{T1}{augie}{m}{n} 	
+		\large #1 \vspace{4pt}
+		\par \normalsize \normalfont}
+		
+\newcommand{\NewsAuthor}[1]{%
+			\hfill by \textsc{#1} \vspace{4pt}
+			\par \normalfont}		
+
+
+
+%____________________________FORMAT QCM___________________________
+\newcommand{\Trou}[0]
+   {........................ }
+
+\newcommand{\Question}[0]
+   {\begin{wrapfigure}[2]{l}{10mm}\vspace{-0.6cm}\includegraphics{Figs/Question.png}\end{wrapfigure}}
+
+\newcommand{\Reponse}[1]
+   {{\textcolor{PineGreen}{\textit{#1}}}}
+%_______________________________________________________________________________
+
+
+%____________________________FORMAT VECTEURS en MECA___________________________
+
+\newcommand{\vecteur}[3]
+{
+\[
+\vec{#1}
+\left \{
+   \begin{array}{r c l}
+      #1_x & = & #2\\
+     #1_y & = & #3 \\
+   \end{array}  \right .
+\]
+}
+\newcommand{\OM}[2]
+{
+\[
+\vec{OM}
+\left \{
+   \begin{array}{r c l}
+      x(t) & = & #1\\
+     y(t) & = & #2 \\
+   \end{array}  \right .
+\]
+}
+%_______________________________________________________________________________
+
+
+
+%____________________________FORMAT MOLECULES & Co. en CHIMIE__________________________
+
+\newcommand{\Molecule}[1]
+{
+\chemfig{[,0.7]#1}
+}
+\newcommand{\FlecheRea}[2]
+{
+\xrightarrow[   #1   ]{#2}\hspace{0.5cm}
+}
+\newcommand{\Meso}[0]
+{
+\hspace{5mm}
+\longleftrightarrow
+\hspace{5mm}
+}
+\newcommand{\electron}[0]{
+$e^-$
+}
+
+	
+%________________________________________________Compétences__________________________________
+\newcommand{\RCO}[0]
+   {\colorbox{Yellow}{\textcolor{black}{\textbf{RCO}}}\vspace{0.2cm}}
+\newcommand{\APP}[0]
+   {\colorbox{Goldenrod}{\textcolor{black}{\textbf{APP}}}\vspace{0.2cm}}
+\newcommand{\ANAI}[0]
+   {\colorbox{Cerulean}{\textcolor{black}{\textbf{ANA 1}}}\vspace{0.2cm}}   
+\newcommand{\ANAII}[0]
+   {\colorbox{Cerulean}{\textcolor{black}{\textbf{ANA 2}}}\vspace{0.2cm}}   
+\newcommand{\REAI}[0]
+   {\colorbox{Aquamarine}{\textcolor{black}{\textbf{REA 1}}}\vspace{0.2cm}}   
+\newcommand{\REAII}[0]
+   {\colorbox{Aquamarine}{\textcolor{black}{\textbf{REA 2}}}\vspace{0.2cm}} 
+\newcommand{\REAIII}[0]
+   {\colorbox{Aquamarine}{\textcolor{black}{\textbf{REA 3}}}\vspace{0.2cm}}   
+\newcommand{\REAIV}[0]
+   {\colorbox{Aquamarine}{\textcolor{black}{\textbf{REA 4}}}\vspace{0.2cm}} 
+\newcommand{\REAV}[0]
+   {\colorbox{Aquamarine}{\textcolor{black}{\textbf{REA 5}}}\vspace{0.2cm}}   
+\newcommand{\VALI}[0]
+   {\colorbox{YellowGreen}{\textcolor{black}{\textbf{VAL 1}}}\vspace{0.2cm}}  
+\newcommand{\VALII}[0]
+   {\colorbox{YellowGreen}{\textcolor{black}{\textbf{VAL 2}}}\vspace{0.2cm}}  
+\newcommand{\VALIII}[0]
+   {\colorbox{YellowGreen}{\textcolor{black}{\textbf{VAL 3}}}\vspace{0.2cm}}  
+\newcommand{\COMI}[0]
+   {\colorbox{Apricot}{\textcolor{black}{\textbf{COM 1}}}\vspace{0.2cm}}  
+\newcommand{\COMII}[0]
+   {\colorbox{Apricot}{\textcolor{black}{\textbf{COM 2}}}\vspace{0.2cm}}  
+\newcommand{\COMIII}[0]
+   {\colorbox{Apricot}{\textcolor{black}{\textbf{COM 3}}}\vspace{0.2cm}}
